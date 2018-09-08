@@ -1,0 +1,49 @@
+Hacer esto antes de correr el script
+
+crear usuario dtlab
+
+https://tecadmin.net/how-to-enable-ssh-as-root-on-aws-ubuntu-instance/
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
+
+sudo su -
+nano /root/.ssh/authorized_keys
+
+adduser dtlab
+echo "Use the usermod command to add the user to the sudo group."
+usermod -aG sudo,ubuntu,adm,dialout,cdrom,floppy,audio,dip,video,plugdev,netdev,lxd dtlab
+sudo su dtlab
+
+
+____________safe way on a fresh EC2_______________________
+
+cd ~
+mkdir scripts
+nano scripts/buildF1.sh
+cd ~
+echo "copy contents of buildF into the shell"
+
+chmod u+x scripts/*.sh
+source scripts/buildF1.sh
+sudo reboot
+
+./scripts/buildF2.sh
+
+
+-------------create start and stop services -----------------
+cd ~
+nano scripts/startFabric.sh
+# add contents
+cd ~
+nano scripts/stopFabric.sh
+# add contents
+
+----------------- cron shutdown service ---------------------
+#add a crontab service to shutdown the Fabric orderly before EC2 schedule shut down
+
+crontab -e
+
+# add this line
+45 20 * * * sh /home/ubuntu/scripts/stopFabric.sh
+
+
