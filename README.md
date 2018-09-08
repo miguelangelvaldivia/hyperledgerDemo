@@ -22,14 +22,26 @@ Prepare the environment.  Log into your EC2 instance (I chose Ubuntu 16.04). Cre
 
 ```sh
 cd ~
-git clone https://github.com/hyperledger/fabric.git
-# copy contents of buildF into the shell
+# clone this repo into your AWS AMI
+https://github.com/miguelangelvaldivia/hyperledgerDemo.git
+# set appropriate permissions on scripts folder 
+chmod 600 scripts
+# and the bash files that contains
+cd scripts
+chmod 400 buildF1.sh
+chmod 400 buildF2.sh
+chmod 400 startFabric.sh
+chmod 400 stopFabric.sh
 ```
-
-Clone the repo and find a a script to install the prerequisites for Fabric as well as build latest version of Fabric:
-'source scripts/buidF1.sh'
-Use source to invoke this bash. Installs go, python, docker and docker-compose
-reboot the EC2.
-Verify that user "ubuntu" is in the "docker" group
-Run the second script:
-'./scripts/buildF2.sh'
+You could add `scripts` to your `PATH` or
+```sh
+# invoke the bash from scripts folder
+# use source for buildF1.sh
+source scripts/buildF1.sh
+# reboot the EC2
+# log back in and make sure that ubuntu is part of group docker
+groups
+# continue with buildF2.sh
+./scripts/buildF2.sh
+```
+After `buildF2.sh` a network will have been started.  Log in into a separate terminal with a CLI session.
