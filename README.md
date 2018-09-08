@@ -24,14 +24,9 @@ Prepare the environment.  Log into your EC2 instance (I chose Ubuntu 16.04). Cre
 cd ~
 # clone this repo into your AWS AMI
 https://github.com/miguelangelvaldivia/hyperledgerDemo.git
-# set appropriate permissions on scripts folder 
-chmod 600 scripts
-# and the bash files that contains
+# set appropriate permissions for the bash files
 cd scripts
-chmod 400 buildF1.sh
-chmod 400 buildF2.sh
-chmod 400 startFabric.sh
-chmod 400 stopFabric.sh
+chmod u+x *.sh
 ```
 You could add `scripts` to your `PATH` or
 ```sh
