@@ -1,23 +1,30 @@
-# hyperledgerDemo
+# HyperledgerDemo
 Sets up prerequisites and does a fresh installation of Hyperledger Fabric. The scripts are tailor made for an AWS AMI over an ubuntu user.
-<h2>Scripts</h2>
-There are four scripts in the scripts folder:
-<li>buildF1.sh
-<li>buildF2.sh
-<li>startFabric.sh
-<li>stopFabric.sh
 
-<strong>buildF1.sh</strong>
-Installs the prerequisites go, docker, python and docker-compose.
-<strong>buildF2.sh</strong>
+## Scripts
+There are four scripts in the scripts folder:
+- buildF1.sh
+- buildF2.sh
+- startFabric.sh
+- stopFabric.sh
+
+### buildF1.sh
+Installs the prerequisites go, docker, python and docker-compose
+### buildF2.sh
 Downloads Fabric and starts the network for exercise <i>e2e_cli</i>.
-<strong>startFabric.sh</strong>
+### startFabric.sh
 Starts the network for exercise sample <i>e2e_cli</i>.
-<strong>stopFabric.sh</strong>
+### stopFabric.sh
 Stops the network for exercise sample <i>e2e_cli</i>.  This script is called from the cron service daily.
 
-<h2>Install</h2>
+## Install
 Prepare the environment.  Log into your EC2 instance (I chose Ubuntu 16.04). Create new directory <i>scripts</i> under your HOME directory.
+
+```sh
+cd ~
+git clone https://github.com/hyperledger/fabric.git
+# copy contents of buildF into the shell
+```
 
 Clone the repo and find a a script to install the prerequisites for Fabric as well as build latest version of Fabric:
 'source scripts/buidF1.sh'
