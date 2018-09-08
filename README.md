@@ -45,3 +45,21 @@ groups
 ./scripts/buildF2.sh
 ```
 After `buildF2.sh` a network will have been started.  Log in into a separate terminal with a CLI session.
+
+## Save some money
+Once the server is running you may want to turn it down and bring back up at a certain times during the day.  This will avoid charges for running this dev environment overnight.  
+Use a combination of services:
+- CloudWatch
+- a cron service in your EC2
+
+### CloudWatch
+Create a Lambda and a schedule service to turn your EC2 up and down.  AWS scheduler is also an option.  Have a look in:
+`https://aws.amazon.com/premiumsupport/knowledge-center/start-stop-lambda-cloudwatch/`
+### cron service
+Add a crontab service to shutdown the Fabric orderly before EC2 schedule shuts it down
+```sh
+crontab -e
+# add this line
+45 20 * * * sh /home/ubuntu/scripts/stopFabric.sh 
+# this will stop the e2e_cli.sh sample network (if running) ahead of the EC2 scheduled shut down
+```
