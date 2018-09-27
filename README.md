@@ -23,7 +23,7 @@ Prepare the environment.  Log into your EC2 instance (I chose Ubuntu 16.04). Cre
 ```sh
 cd ~
 # clone this repo into your AWS AMI
-https://github.com/miguelangelvaldivia/hyperledgerDemo.git
+git clone https://github.com/miguelangelvaldivia/hyperledgerDemo.git
 # set appropriate permissions for the bash files
 cd scripts
 chmod u+x *.sh
